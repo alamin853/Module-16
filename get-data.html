@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>JSON</h1>
+    <h2>JavaScript Object Notation</h2>
+    <ul id="myList">
+    </ul>
+
+    <script>
+
+        fetch('https://jsonplaceholder.typicode.com/users')
+        .then(response => response.json())
+        .then(json => displayUser(json))
+        .catch(error => console.log(error))
+
+        function displayUser(users){
+            const userName = users.map(users => users.username);
+            const ul = document.getElementById("myList");
+            for (let i = 0; i < userName.length; i++) {
+                const user = userName[i];
+            const li = document.createElement("li");
+            li.innerText = user;
+            ul.appendChild(li);
+            }
+        }
+
+        const friends = [
+            {id: 12, name: "Alamin", age: 22},
+            {id: 13, name: "Tanvir", age: 20},
+            {id: 14, name: "Endika", age: 21},
+            {id: 15, name: "Shahadat", age: 24},
+            {id: 16, name: "Fahim", age: 21},
+        ]
+        
+        const friendsName = friends.map(x => x.name);
+        const ul = document.getElementById("myList");
+        for (let i = 0; i < friendsName.length; i++) {
+            const user = friendsName[i];
+            const li = document.createElement("li");
+            li.innerText = user;
+            ul.appendChild(li);
+        }
+    </script>
+</body>
+</html>
